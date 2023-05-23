@@ -10,7 +10,7 @@ public class CircularLinkedList {
 
     public CircularLinkedList() {
         this.head = new DummyNodeCircular();
-        this.tail = new DummyNodeCircular();
+        this.tail = head;
         this.head.next = tail;
         this.tail.prev = head;
         this.size = 0;
@@ -42,8 +42,8 @@ public class CircularLinkedList {
 
     public ArrayList<NodeCircular> findAll(int _value) {
         ArrayList<NodeCircular> nodes = new ArrayList<>();
-        NodeCircular node = this.head;
-        while (node != null) {
+        NodeCircular node = this.head.next;
+        while (!(node instanceof DummyNodeCircular)) {
             if (node.value == _value) {
                 nodes.add(node);
             }

@@ -61,6 +61,7 @@ public class LinkedList2 {
                     return true;
                 }
                 if (foundNode.next == this.tail) {
+                    this.tail.prev = null;
                     this.head = this.tail;
                     return true;
                 }

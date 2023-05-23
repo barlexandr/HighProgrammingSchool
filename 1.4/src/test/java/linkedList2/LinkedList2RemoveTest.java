@@ -47,7 +47,8 @@ public class LinkedList2RemoveTest {
 
         var result = list.remove(24);
 
-        if (!result || list.head.value != 1 || list.tail.value != 1 || list.head.next != null) {
+        if (!result || list.head.value != 1 || list.tail.value != 1 || list.head.next != null
+                || list.tail.prev != null || list.tail.next != null || list.head.prev != null) {
             throw new Exception("Test remove_ByListHasTwoElementTest_deletedTail failed.");
         } else {
             System.out.println("remove_ByListHasTwoElementTest_deletedTail passed");
@@ -61,7 +62,8 @@ public class LinkedList2RemoveTest {
 
         var result = list.remove(1);
 
-        if (!result || list.head.value != 24 || list.tail.value != 24 || list.head.next != null) {
+        if (!result || list.head.value != 24 || list.tail.value != 24 || list.head.next != null
+                || list.tail.prev != null || list.tail.next != null || list.head.prev != null) {
             throw new Exception("Test remove_ByListHasTwoElementTest_deletedTail failed.");
         } else {
             System.out.println("remove_ByListHasTwoElementTest_deletedTail passed");

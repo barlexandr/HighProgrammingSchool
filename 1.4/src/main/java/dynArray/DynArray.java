@@ -6,28 +6,28 @@ public class DynArray<T> {
     public T[] array;
     public int count;
     public int capacity;
+    private static final int INITIAL_CAPACITY = 16;
     Class clazz;
 
     public DynArray(Class clz) {
-        clazz = clz;
+        this.clazz = clz;
         count = 0;
-        this.array = (T[]) new Object[16];
-        makeArray(16);
+        makeArray(INITIAL_CAPACITY);
     }
 
     public void makeArray(int new_capacity) {
         T[] newArray = (T[]) Array.newInstance(this.clazz, new_capacity);
         int oldCapacity = this.capacity;
         this.capacity = new_capacity;
-        if (count != 0) {
+        if (array != null && count != 0) {
             for (int i = 0, j = 0; i < oldCapacity && j < new_capacity; i++, j++) {
                 while (this.array[i] == null && i < oldCapacity - 1) {
                     i++;
                 }
                 newArray[j] = this.array[i];
             }
-            this.array = newArray;
         }
+        this.array = newArray;
     }
 
     public T getItem(int index) {
@@ -42,6 +42,9 @@ public class DynArray<T> {
     }
 
     public void insert(T itm, int index) {
+        if (index > count) {
+            throw new IndexOutOfBoundsException("Enter an index that is less than or equal to the current array dimension.");
+        }
         this.checkIndexAgainstArrayBounds(index);
         this.resizeIfNeeded();
 
@@ -85,7 +88,7 @@ public class DynArray<T> {
     }
 
     private void checkIndexAgainstArrayBounds(int index) {
-        if (index > capacity) {
+        if (index < 0 || index > capacity) {
             throw new IndexOutOfBoundsException("Enter an index that is less than or equal to the current array dimension.");
         }
     }

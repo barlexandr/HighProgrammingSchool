@@ -5,15 +5,15 @@ public class DynArrayInsertTest {
     public static void main(String[] args) throws Exception {
         var test = new DynArrayInsertTest();
 
-//        test.insert_bufferSizeExceededTest();
-//        test.insert_bufferSizeNotExceededTest();
-//        test.insert_elementAtInvalidPosition();
-        test.insert_bufferSizeExceeded_indexEqualsCountTest();
+        test.insert_bufferSizeExceededTest();
+        test.insert_bufferSizeNotExceededTest();
+        test.insert_elementAtInvalidPosition();
+        test.insertAnyTypeElementTest();
     }
 
     void insert_bufferSizeNotExceededTest() throws Exception {
         var array = new DynArray<Integer>(Integer.class);
-        array.insert(2, 5);
+        array.insert(2, 0);
 
         if (array.capacity != 16 && array.getItem(5) != 2) {
             throw new Exception("Test insert_bufferSizeNotExceededTest failed.");
@@ -22,22 +22,19 @@ public class DynArrayInsertTest {
 
     void insert_bufferSizeExceededTest() throws Exception {
         var array = new DynArray<Integer>(Integer.class);
+        boolean passed = false;
         fillArray(array);
         array.insert(2, 5);
-        array.insert(512, 25);
-
-        if (array.capacity != 32 && array.getItem(5) != 2 && array.getItem(25) != 512) {
-            throw new Exception("Test insert_bufferSizeExceededTest failed.");
+        try {
+            array.insert(512, 25);
+        } catch (Exception e) {
+            if (e instanceof IndexOutOfBoundsException) {
+                passed = true;
+            }
         }
-    }
 
-    void insert_bufferSizeExceeded_indexEqualsCountTest() throws Exception {
-        var array = new DynArray<Integer>(Integer.class);
-//        fillArray(array);
-        array.insert(2, 16);
-
-        if (array.capacity != 16 && array.getItem(15) != 2) {
-            throw new Exception("Test insert_bufferSizeExceeded_indexEqualsCountTest failed.");
+        if (array.capacity != 32 && array.getItem(5) != 2 && !passed) {
+            throw new Exception("Test insert_bufferSizeExceededTest failed.");
         }
     }
 
@@ -50,6 +47,20 @@ public class DynArrayInsertTest {
             if (e.getClass() != IndexOutOfBoundsException.class) {
                 throw new Exception("Test insert_elementAtInvalidPosition failed.");
             }
+        }
+    }
+
+    void insertAnyTypeElementTest() throws Exception {
+        var array = new DynArray<>(Integer.class);
+        boolean testPassed = false;
+        array.insert(1, 0);
+        try {
+            array.insert(1.0, 1);
+        } catch (Exception e) {
+            testPassed = true;
+        }
+        if (!testPassed) {
+            throw new Exception("Test insertAnyTypeElementTest failed.");
         }
     }
 

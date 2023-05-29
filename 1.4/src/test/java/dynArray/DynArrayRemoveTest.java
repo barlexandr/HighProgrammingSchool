@@ -8,6 +8,7 @@ public class DynArrayRemoveTest {
         test.remove_bufferSizeNotExceededTest();
         test.remove_bufferSizeExceededTest();
         test.remove_elementAtInvalidPosition();
+        test.remove_elementAtNullPosition();
     }
 
     void remove_bufferSizeNotExceededTest() throws Exception {
@@ -46,6 +47,19 @@ public class DynArrayRemoveTest {
                 throw new Exception("Test remove_elementAtInvalidPosition failed.");
             }
         }
+    }
+
+    void remove_elementAtNullPosition() throws Exception {
+        var array = new DynArray<Integer>(Integer.class);
+        fillArray(array);
+        array.remove(0);
+        var item = array.getItem(0);
+
+        if (item != 2) {
+            throw new Exception("Test remove_elementAtNullPosition failed.");
+        }
+
+
     }
 
     void fillArray(DynArray array) {

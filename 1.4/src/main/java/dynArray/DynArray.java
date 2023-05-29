@@ -73,8 +73,8 @@ public class DynArray<T> {
         this.array[index] = null;
         double coefficient = (double) count / capacity;
         int newCapacity = (int) (this.capacity / 1.5);
-        if (newCapacity < 16) {
-            newCapacity = 16;
+        if (newCapacity < INITIAL_CAPACITY) {
+            newCapacity = INITIAL_CAPACITY;
         }
         if (coefficient < 0.5 && this.capacity != newCapacity) {
             makeArray(newCapacity);

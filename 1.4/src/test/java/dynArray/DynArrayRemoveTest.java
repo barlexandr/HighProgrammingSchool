@@ -19,7 +19,7 @@ public class DynArrayRemoveTest {
         array.append(4);
         array.remove(2);
 
-        if (array.capacity != 16 && array.getItem(2) != null) {
+        if (array.capacity != 16 || array.getItem(2) == null) {
             throw new Exception("Test remove_bufferSizeNotExceededTest failed.");
         }
     }
@@ -29,9 +29,9 @@ public class DynArrayRemoveTest {
         fillArray(array);
         array.remove(5);
         array.remove(6);
-        array.remove(15);
+        array.remove(12);
 
-        if (array.capacity != 21 && array.getItem(5) != 8 && array.getItem(21) != null) {
+        if (array.capacity != 21 || array.getItem(5) != 7 || array.getItem(20) != null) {
             throw new Exception("Test remove_bufferSizeExceededTest failed.");
         }
 

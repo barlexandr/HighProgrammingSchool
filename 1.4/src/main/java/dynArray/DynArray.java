@@ -72,7 +72,7 @@ public class DynArray<T> {
         }
         this.array[index] = null;
 
-        while (index < count - 1 && array[index + 1] != null) {
+        while (index < count && array[index + 1] != null) {
             array[index] = array[index + 1];
             array[index + 1] = null;
             index++;

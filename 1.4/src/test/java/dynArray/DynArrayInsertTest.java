@@ -15,7 +15,7 @@ public class DynArrayInsertTest {
         var array = new DynArray<Integer>(Integer.class);
         array.insert(2, 0);
 
-        if (array.capacity != 16 && array.getItem(5) != 2) {
+        if (array.capacity != 16 || array.getItem(5) != null) {
             throw new Exception("Test insert_bufferSizeNotExceededTest failed.");
         }
     }
@@ -33,7 +33,7 @@ public class DynArrayInsertTest {
             }
         }
 
-        if (array.capacity != 32 && array.getItem(5) != 2 && !passed) {
+        if (array.capacity != 32 || array.getItem(5) != 2 || !passed) {
             throw new Exception("Test insert_bufferSizeExceededTest failed.");
         }
     }

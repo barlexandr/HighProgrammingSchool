@@ -25,7 +25,7 @@ public class OrderedList<T> {
     }
 
     public int compare(T v1, T v2) {
-        if (v1 instanceof String) {
+        if (v1 instanceof String || v2 instanceof String) {
             String value1;
             String value2;
             try {

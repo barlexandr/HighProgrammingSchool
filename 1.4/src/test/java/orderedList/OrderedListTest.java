@@ -15,14 +15,15 @@ class OrderedListTest {
         list.add(7);
         list.add(15);
         list.add("string");
+        list.add(1);
 
         final var result = list.getAll().stream()
                 .map(n -> n.value)
                 .collect(Collectors.toList())
                 .toString();
 
-        assertEquals(4, list.count());
-        assertEquals("[string, 15, 10, 7]", result);
+        assertEquals(5, list.count());
+        assertEquals("[string, 15, 10, 7, 1]", result);
     }
 
     @Test

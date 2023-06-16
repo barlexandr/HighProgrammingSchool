@@ -9,6 +9,26 @@ import static org.junit.jupiter.api.Assertions.*;
 class OrderedListTest {
 
     @Test
+    void addInteger_byAsc_byChangeHead_test() {
+        var list = new OrderedList<>(true);
+        list.add(0);
+        list.add(2);
+        list.add(1);
+        list.add(1);
+        list.add(2);
+        list.add(1);
+        list.add(0);
+
+        final var result = list.getAll().stream()
+                .map(n -> n.value)
+                .collect(Collectors.toList())
+                .toString();
+
+        assertEquals(7, list.count());
+        assertEquals("[0, 0, 1, 1, 1, 2, 2]", result);
+    }
+
+    @Test
     void addIntegerAndStringValue_byDesc_test() {
         var list = new OrderedList<>(false);
         list.add(10);

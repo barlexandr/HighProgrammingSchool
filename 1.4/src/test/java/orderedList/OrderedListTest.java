@@ -8,6 +8,22 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class OrderedListTest {
 
+    @Test
+    void addIntegerAndStringValue_byDesc_test() {
+        var list = new OrderedList<>(false);
+        list.add(10);
+        list.add(7);
+        list.add(15);
+        list.add("string");
+
+        final var result = list.getAll().stream()
+                .map(n -> n.value)
+                .collect(Collectors.toList())
+                .toString();
+
+        assertEquals(4, list.count());
+        assertEquals("[string, 15, 10, 7]", result);
+    }
 
     @Test
     void addStringValue_test() {

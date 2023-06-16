@@ -29,8 +29,8 @@ public class OrderedList<T> {
             String value1;
             String value2;
             try {
-                value1 = ((String) v1).replaceAll("\\s+", "");
-                value2 = ((String) v2).replaceAll("\\s+", "");
+                value1 = (v1.toString()).replaceAll("\\s+", "");
+                value2 = (v2.toString()).replaceAll("\\s+", "");
             } catch (Exception e) {
                 throw new ClassCastException("The data type is not string. Comparison is impossible.");
             }
@@ -41,9 +41,8 @@ public class OrderedList<T> {
             return value1.compareTo(value2) < 0 ?
                     -1 :
                     1;
-
         }
-        if (v1 instanceof Integer) {
+        if (v1 instanceof Number && v2 instanceof Number) {
             Integer value1;
             Integer value2;
             try {
@@ -58,8 +57,9 @@ public class OrderedList<T> {
             if (value1 > value2) {
                 return 1;
             }
+            return 0;
         }
-        return 0;
+        throw new ClassCastException("The data type cannot be cast to a numeric or string. Comparison is impossible.");
     }
 
     public void add(T value) {

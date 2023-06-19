@@ -71,7 +71,7 @@ public class OrderedList<T> {
         while (temp != null) {
             int resultOfCompare = this.compare(value, temp.value);
 
-            // Если по возрастанию и value < head.value то новый head;
+            // Если по возрастанию и value <= head.value то новый head;
             if (temp == this.head && this._ascending && resultOfCompare != 1
                     || temp == this.head && !this._ascending && resultOfCompare != -1) {
                 this.head = new Node<>(value);

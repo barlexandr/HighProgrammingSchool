@@ -17,12 +17,6 @@ class NativeCache<T> {
         this.values = (T[]) Array.newInstance(clazz, this.size);
     }
 
-    /**
-     * Определяет хэш-код ключа.
-     *
-     * @param key Ключ, хэш-код которого определяется.
-     * @return Хэш-код ключа.
-     */
     public int hashFun(String key) {
         var arrayOfValue = key.toCharArray();
         var p = 65;
@@ -35,13 +29,6 @@ class NativeCache<T> {
         return h;
     }
 
-    /**
-     * Записывает ключ-значение в структуру.
-     * Если свободного места нет, то вытесняем ключ-значение с наименьшим количеством обращений.
-     *
-     * @param key   Ключ.
-     * @param value Значение.
-     */
     public void put(String key, T value) {
         var slot = this.seekSlot(key);
         if (slot == -1) {
@@ -56,12 +43,6 @@ class NativeCache<T> {
         }
     }
 
-    /**
-     * Возвращает значение по ключу.
-     *
-     * @param key Ключ, по которому необходимо найти значение.
-     * @return Значение, если оно найдено или null.
-     */
     public T get(String key) {
         var slot = this.seekSlot(key);
         if (slot != -1) {
@@ -71,15 +52,6 @@ class NativeCache<T> {
         return null;
     }
 
-    /**
-     * Проверяет по хэшу ключа наличие элемента.
-     * Если элемент есть, то возвращает его индекс.
-     * Если элемента нет, то пытается найти ему слот.
-     * Если все слоты заняты, возвращает -1.
-     *
-     * @param key Значение ключа.
-     * @return Индекс ключа или -1.
-     */
     private int seekSlot(String key) {
         int hash = this.hashFun(key);
         int count = 0;

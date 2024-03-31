@@ -31,5 +31,5 @@ timerJobs - timeForCompletedTask
 name - userName
 // имя пользователя
 
-msgJobs - descriptionOfTask
-// сообщение по задаче
+msgJobs - descriptionAddedToTask
+// описание, добавленное к задаче

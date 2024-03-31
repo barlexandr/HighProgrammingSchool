@@ -1,0 +1,35 @@
+activIncedents - activeUserIncidents
+// массив активных инцидентов, созданных пользователями
+
+execJobs - tasksAtWork
+// массив заданий в работе
+
+processes - activeProcessesByTask
+// массив активных процессов по заданию
+
+lockJob - blockedProcessesByTask
+// массив заблокированных процессов по заданию
+
+deployments - processesInDeployment
+// массив процессов в режиме развертывания
+
+activeTasks - activeUserTasks
+// массив активных задач пользователя
+
+count - amountOfActiveUsers
+// количество активных пользователей
+
+subForUser - amountOfSubscriptionsUserHas
+// количество подписок у пользователя
+
+complJobs - amountOfCompletedTasksByUser
+// количество завершенных задач у пользователя
+
+timerJobs - timeForCompletedTask
+// время за которое выполнена задача
+
+name - userName
+// имя пользователя
+
+msgJobs - descriptionOfTask
+// сообщение по задаче

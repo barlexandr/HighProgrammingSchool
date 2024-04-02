@@ -1,0 +1,54 @@
+6.1
+    sumOfValues - lengthForwarderRoute
+    // вместо суммы каких-то значений - протяженность маршрута экспедитора
+
+    hashMap - mapOfUniqueFrequency
+    // вместо типа мапы - мапа уникальных значений частот
+
+    values - listOfJobToBeCompleted
+    // вместо списка значений - список заданий к исполнению
+
+    counter - amountOfOpenHooks
+    // вместо наименования счетчика - количество открывающихся скобочек в выражении
+
+    characters - uniqueCharInWord
+    // вместо списка символов - уникальные символы в слове
+
+6.2
+    getLengthForDijkstra
+    // возвращает расстояние, вычисленное по алгоритму Дейкстры
+
+    JobBuilder
+    // класс Job, который использует паттерн билдер
+
+    ClientIterator
+    // указывает, что класс Client имплементирует интерфейс Iterator
+
+    SingletonManager
+    // класс Manager с единственно возможным экземпляром
+
+6.3
+    class Message {
+        private LocalDateTime sendTime;
+    }
+    // sendTime относится к message, таким образом становится понятно, что в этой переменной хранится время отправки сообщения.
+
+    public List<String> getUniqueNamesOfPersons(List<Person> persons) {
+        var uniqueNames = persons.stream().distinct().collect(Collectors.toList());
+        return uniqueNames;
+    }
+    // из контекста понятно, что names - это уникальные имена списка persons
+
+    class Person {
+        private String firstName;
+        private LocalDate birthday;
+    }
+    // из контекста понятно, что firstName и birthday будут относиться к объекту класса Person
+
+6.4
+    pattern - patternForPersonName
+    hashListWithUniquePersonName - setWithPersonName
+    output - strBuilderForOutput
+    isRoman - isStringRomanNotation
+    stringBuilderForPersonNameLastNameBirthday - strBuilderForPersonData
+

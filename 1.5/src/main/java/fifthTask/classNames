@@ -1,0 +1,15 @@
+3.1
+    StatusConverter
+    PaymentInformation
+    PaymentResponseGenerator
+    PaymentRequestExceptionHandler
+    MonitoringConfiguration
+
+3.2
+    PaymentController
+        .makePayment();
+        .makeAutoSubscriptionPayment();
+        .getPaymentDetails();
+        .makeRepayment();
+        .getPaymentArrears();
+        .getAllOutstandingPayment();
